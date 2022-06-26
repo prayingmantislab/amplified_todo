@@ -8,7 +8,11 @@ import {
   TextInput,
   View,
   Platform,
+  Button,
 } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
 import { DataStore } from 'aws-amplify';
 import { Todo } from './models';
 
@@ -145,6 +149,7 @@ const Home = () => {
     <>
       <Header />
       <TodoList />
+      {/* <Button onPress={() => navigation.navigate('Chawazi')} /> */}
       <Pressable
         onPress={() => {
           setModalVisible(true);

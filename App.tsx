@@ -19,17 +19,14 @@ Amplify.configure(awsconfig);
 //     </View>
 //   );
 // }
+
 export default function App() {
   return (
     <View style={styles.container}>
       <NavigationContainer>
         {/*@ts-ignore  */}
         <Stack.Navigator>
-          <Stack.Screen
-            name='Home'
-            component={Home}
-            options={{ title: 'Welcome' }}
-          />
+          <Stack.Screen name='Home' component={Home} />
           <Stack.Screen name='Chawazi' component={Chawazi} />
         </Stack.Navigator>
       </NavigationContainer>
