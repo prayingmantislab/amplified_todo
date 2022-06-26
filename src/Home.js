@@ -23,9 +23,12 @@ const AddTodoModal = ({ modalVisible, setModalVisible }) => {
   const [description, setDescription] = useState('');
 
   async function addTodo() {
-    //to be filled in a later step
+    await DataStore.save(new Todo({ name, description, isComplete: false }));
+    setModalVisible(false);
+    setName('');
+    setDescription('');
   }
-
+  
   function closeModal() {
     setModalVisible(false);
   }
