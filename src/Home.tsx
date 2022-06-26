@@ -18,7 +18,13 @@ const Header = () => (
   </View>
 );
 
-const AddTodoModal = ({ modalVisible, setModalVisible }) => {
+const AddTodoModal = ({
+  modalVisible,
+  setModalVisible,
+}: {
+  modalVisible: any;
+  setModalVisible: any;
+}) => {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
 
@@ -35,7 +41,7 @@ const AddTodoModal = ({ modalVisible, setModalVisible }) => {
 
   return (
     <Modal
-      animationType="fade"
+      animationType='fade'
       onRequestClose={closeModal}
       transparent
       visible={modalVisible}
@@ -47,12 +53,12 @@ const AddTodoModal = ({ modalVisible, setModalVisible }) => {
           </Pressable>
           <TextInput
             onChangeText={setName}
-            placeholder="Name"
+            placeholder='Name'
             style={styles.modalInput}
           />
           <TextInput
             onChangeText={setDescription}
-            placeholder="Description"
+            placeholder='Description'
             style={styles.modalInput}
           />
           <Pressable onPress={addTodo} style={styles.buttonContainer}>
@@ -66,23 +72,23 @@ const AddTodoModal = ({ modalVisible, setModalVisible }) => {
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
-  
-useEffect(() => {
 
+  useEffect(() => {
     //query the initial todolist and subscribe to data updates
     const subscription = DataStore.observeQuery(Todo).subscribe((snapshot) => {
-      //isSynced can be used to show a loading spinner when the list is being loaded. 
+      //isSynced can be used to show a loading spinner when the list is being loaded.
       const { items, isSynced } = snapshot;
+      // @ts-ignore
       setTodos(items);
     });
 
     //unsubscribe to data updates when component is destroyed so that we don’t introduce a memory leak.
     return function cleanup() {
       subscription.unsubscribe();
-    }
-
+    };
   }, []);
-  
+
+  // @ts-ignore
   async function deleteTodo(todo) {
     try {
       await DataStore.delete(todo);
@@ -90,16 +96,17 @@ useEffect(() => {
       console.log('Delete failed: $e');
     }
   }
-
+  // @ts-ignore
   async function setComplete(updateValue, todo) {
     //update the todo item with updateValue
     await DataStore.save(
-      Todo.copyOf(todo, updated => {
-        updated.isComplete = updateValue
+      Todo.copyOf(todo, (updated) => {
+        updated.isComplete = updateValue;
       })
     );
   }
 
+  // @ts-ignore
   const renderItem = ({ item }) => (
     <Pressable
       onLongPress={() => {
@@ -153,7 +160,6 @@ const Home = () => {
     </>
   );
 };
-
 const styles = StyleSheet.create({
   headerContainer: {
     backgroundColor: '#4696ec',

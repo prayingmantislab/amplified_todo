@@ -1,16 +1,38 @@
-import React from 'react';
+import * as React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StatusBar, StyleSheet, View } from 'react-native';
 import { Amplify } from 'aws-amplify';
 import awsconfig from './src/aws-exports';
 import Home from './src/Home';
+import Chawazi from './src/Chawazi';
+
+const Stack = createNativeStackNavigator();
 
 Amplify.configure(awsconfig);
 
+// export default function App() {
+//   return (
+//     <View style={styles.container}>
+//       <StatusBar />
+//       <Home />
+//     </View>
+//   );
+// }
 export default function App() {
   return (
     <View style={styles.container}>
-      <StatusBar />
-      <Home />
+      <NavigationContainer>
+        {/*@ts-ignore  */}
+        <Stack.Navigator>
+          <Stack.Screen
+            name='Home'
+            component={Home}
+            options={{ title: 'Welcome' }}
+          />
+          <Stack.Screen name='Chawazi' component={Chawazi} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </View>
   );
 }
