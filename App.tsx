@@ -6,6 +6,7 @@ import { Amplify } from 'aws-amplify';
 import awsconfig from './src/aws-exports';
 import Home from './src/Home';
 import Chawazi from './src/Chawazi';
+import Payment from './src/Payment';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,7 @@ export default function App() {
         <Stack.Navigator>
           <Stack.Screen name='Home' component={Home} />
           <Stack.Screen name='Chawazi' component={Chawazi} />
+          <Stack.Screen name='Payment' component={Payment} />
         </Stack.Navigator>
       </NavigationContainer>
     </View>

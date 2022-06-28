@@ -148,10 +148,29 @@ const Home = ({ navigation }) => {
   return (
     <>
       <Header />
-      <TodoList />
       <Pressable onPress={() => navigation.navigate('Chawazi')}>
-        <Text>Chawazi</Text>
+        <Text
+          style={[
+            styles.buttonContainer,
+            styles.buttonText,
+            styles.pickerButton,
+          ]}
+        >
+          Chawazi picker
+        </Text>
       </Pressable>
+      <Pressable onPress={() => navigation.navigate('Payment')}>
+        <Text
+          style={[
+            styles.buttonContainer,
+            styles.buttonText,
+            styles.pickerButton,
+          ]}
+        >
+          Checkout
+        </Text>
+      </Pressable>
+      <TodoList />
       <Pressable
         onPress={() => {
           setModalVisible(true);
@@ -258,6 +277,11 @@ const styles = StyleSheet.create({
   modalDismissText: {
     fontSize: 20,
     fontWeight: '700',
+  },
+  pickerButton: {
+    shadowOpacity: 0.3,
+    shadowRadius: 4,
+    margin: 8,
   },
 });
 
