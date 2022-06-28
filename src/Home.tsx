@@ -141,15 +141,17 @@ const TodoList = () => {
     />
   );
 };
-
-const Home = () => {
+/*@ts-ignore  */
+const Home = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   return (
     <>
       <Header />
       <TodoList />
-      {/* <Button onPress={() => navigation.navigate('Chawazi')} /> */}
+      <Pressable onPress={() => navigation.navigate('Chawazi')}>
+        <Text>Chawazi</Text>
+      </Pressable>
       <Pressable
         onPress={() => {
           setModalVisible(true);
@@ -165,6 +167,7 @@ const Home = () => {
     </>
   );
 };
+
 const styles = StyleSheet.create({
   headerContainer: {
     backgroundColor: '#4696ec',

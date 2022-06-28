@@ -11,15 +11,6 @@ const Stack = createNativeStackNavigator();
 
 Amplify.configure(awsconfig);
 
-// export default function App() {
-//   return (
-//     <View style={styles.container}>
-//       <StatusBar />
-//       <Home />
-//     </View>
-//   );
-// }
-
 export default function App() {
   return (
     <View style={styles.container}>
